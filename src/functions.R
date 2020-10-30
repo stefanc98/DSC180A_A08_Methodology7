@@ -67,5 +67,18 @@ Jongho_function <- function(Z) {
   return (result)
 }
 
+#functions that might be used in the future (pipeline)
 
+FDR_function <- function(){
+  
+}
 
+simulate_function <-function(){
+  
+}
+
+fit_function <- function(){
+  
+}
+
+#

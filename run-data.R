@@ -18,8 +18,10 @@ mootha_function(mootha)
 Jongho_function(Z)
 
 
-
-
+#future functions (aka pipeline)
+#FDR_function()
+#simulate_function()
+#fit_function()
 
 
 #source('./src/functions.R')
