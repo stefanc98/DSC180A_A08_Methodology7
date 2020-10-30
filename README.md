@@ -2,9 +2,9 @@
 
 This repository contains the basic codes for this project that focuses on multiple testing. The src folder contains the main R scripts, with all the functions inside, and the data folder, where all the datasets are held. 
 
-In the reference folder, it contains the two papers written by Prof.Schwartzman, which are also the ones we will replicate. 
+In the reference folder, it contains the two papers written by Prof.Schwartzman, which are also the ones we will replicate. In the markdown folder, it has our introduction part of the report.
 
-The function will return the t statistic, p values and various plots that show the differences between the theoretical null model and the empirical null model.
+The function will return the t statistic, p values and various plots that show the differences between the theoretical null model and the empirical null model. 
 
 *in the congfig folder, we don't have any concrete file yet since our repository structure is different from the instruction and the is based on R language. 
 
