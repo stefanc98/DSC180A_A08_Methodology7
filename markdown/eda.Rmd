@@ -1,0 +1,70 @@
+---
+title: "R Notebook"
+output: pdf_notebook
+---
+
+set directory and read in dataset
+```{r}
+setwd('./data')
+filename = 'MoothaData.txt';
+mootha  = read.table(filename)
+```
+
+Install the packages if have not been done yet, ignore if have done so
+
+install.packages("psych",dependencies=TRUE)
+
+separate data by its feature, in our case, it's whether diabetes or not
+```{r}
+g1 = 1:17
+g2 = 18:34
+s1 = sample(g1, 2, replace=FALSE)
+s2 = sample(g2, 2, replace=FALSE)
+sm_sample = c(s1,s2)
+mootha[,sm_sample]
+```
+```{r}
+library(psych)
+```
+
+Function for plotting the matrix
+We only include four person's data by randomly choosing from the two groups
+```{r}
+pairs.panels(mootha[,sm_sample], 
+             method = "pearson", # correlation method
+             hist.col = "#00AFBB",
+             density = TRUE,  # show density plots
+             ellipses = TRUE # show correlation ellipses
+             )
+```
+```{r}
+library(tidyr)
+library(dplyr)
+```
+Here we want to find the summary of the dataset's stats
+First use the gather function from tidyr
+
+Then save the stats as a table, including mean, standard deviation, max and min of each person's gene expression
+```{r}
+mootha_long <- gather(mootha, factor_key=TRUE)
+
+summarydf <- mootha_long %>% group_by(key) %>%
+  summarize(mean= mean(value), sd= sd(value), max = max(value),min = min(value))
+
+summarydf
+```
+
+```{r}
+write.csv(summarydf, filename='stats_summary.csv')
+```
+
+Redo and find the mean of each stats by groups, save them as a dataframe
+```{r}
+g1_stat = apply(summarydf[g1,2:5],2,mean)
+g2_stat = apply(summarydf[g2,2:5],2,mean)
+
+g1_stat
+g2_stat
+
+group_stat = data.frame(g1_stat,g2_stat)
+```

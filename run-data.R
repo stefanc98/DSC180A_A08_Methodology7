@@ -6,17 +6,22 @@ path = paste(dirname(rstudioapi::getSourceEditorContext()$path),'/src/functions.
 # source that path
 source(path)
 
-# build path to Mootha Dataset
-path = paste(dirname(rstudioapi::getSourceEditorContext()$path),'/src/data/MoothaData.txt',sep='')
-mootha  = read.table(path,header=TRUE)
-# build path to Jongho Dataset
-path = paste(dirname(rstudioapi::getSourceEditorContext()$path),'/src/data/JonghoZscores.txt',sep='')
-Z = scan(path)
 
 # run these functions
-mootha_function(mootha)
-Jongho_function(Z)
 
+main = function(targets){
+
+  # build path to Mootha Dataset
+  path = paste(dirname(rstudioapi::getSourceEditorContext()$path),'/src/data/MoothaData.txt',sep='')
+  mootha  = read.table(path,header=TRUE)
+  # build path to Jongho Dataset
+  path = paste(dirname(rstudioapi::getSourceEditorContext()$path),'/src/data/JonghoZscores.txt',sep='')
+  Z = scan(path)
+  
+  mootha_function(mootha)
+  Jongho_function(Z)
+  
+}
 
 #future functions (aka pipeline)
 #FDR_function()
