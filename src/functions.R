@@ -69,9 +69,35 @@ Jongho_function <- function(Z) {
 
 #functions that might be used in the future (pipeline)
 
-FDR_function <- function(){
+FDR_function <- function(t,null,alt){
+  observation = c(null,alt)
+  H0 = c()
+  HA = c()
+  for (i in 1:n){
+    if (observation[i] <= t){
+      H0 = append(H0,observation[i])
+    }
+    else{
+      HA = append(HA,observation[i])
+    }
+  }
+  TP = 0
+  for (i in 1:length(HA)){
+    if (HA[i] %in% alt){
+      TP = TP + 1
+    }
+  }
+  FP = length(HA) - TP
+  FDR = FP/length(HA)
+  
+  return(FDR)
+}
+
+Plot_FDR <- function(t){
   
 }
+
+#functions that might be used in the future (pipeline)
 
 simulate_function <-function(){
   
