@@ -1,4 +1,4 @@
-# DSC180A_A08_Checkpoint1
+# DSC180A_A08_Checkpoint2
 
 This repository contains the basic codes for this project that focuses on multiple testing. The src folder contains the main R scripts, with all the functions inside, and the data folder, where all the datasets are held. 
 
@@ -6,7 +6,7 @@ In the reference folder, it contains the two papers written by Prof.Schwartzman,
 
 The function will return the t statistic, p values and various plots that show the differences between the theoretical null model and the empirical null model. 
 
-*in the congfig folder, we don't have any concrete file yet since our repository structure is different from the instruction and the is based on R language. 
+The congfig folder contains two json file for the use of functions' parameters. 
 
 To run the functions.R file, please use the run-data.R .
 
