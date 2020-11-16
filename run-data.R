@@ -53,6 +53,11 @@ main = function(targets) {
   }
 }
 
+
+if (!interactive()) {
+  main(targets)
+}
+
 #future functions (aka pipeline)
 #FDR_function()
 #simulate_function()
