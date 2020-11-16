@@ -68,3 +68,12 @@ g2_stat
 
 group_stat = data.frame(g1_stat,g2_stat)
 ```
+```{r}
+g1_stat
+```
+```{r}
+g1_stat['mean']
+```
+
+
+
