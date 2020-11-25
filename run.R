@@ -46,9 +46,8 @@ if ('eda' %in% target) {
   	path2 = data_fp['data_fp2']
   	Z = scan(as.character(path2))
   	Jongho_function(Z)
-}
-else {
-	print('invalid input. Input options -- all/test')
+} else {
+	print('invalid input. Command Line options -- all/test')
 }
 
 #future functions (aka pipeline)
