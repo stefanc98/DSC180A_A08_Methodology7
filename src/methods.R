@@ -16,8 +16,8 @@ mootha_function <- function(mootha) {
   
   # Histogram of t-statistics
   x = seq(-5,5,by=0.1)
-  hist(t.stat, breaks=x, freq=F)
-  lines(x, dnorm(x), lwd=2, col='red')
+  # hist(t.stat, breaks=x, freq=F)
+  # lines(x, dnorm(x), lwd=2, col='red')
   
   # Expected number of p-values less than a threshold
   m=nrow(mootha)
@@ -40,15 +40,12 @@ mootha_function <- function(mootha) {
   #lines(x, t.expected, type='l', col='red', lwd=2)
   
   # Plot of false discovery rate
-  plot(p, p.expected/p.obtained, col='black', type='l', lwd=2, ylab='FDR')
-  plot(x, t.expected/t.obtained, col='black', type='l', lwd=2, ylab='FDR')
-  
-  path = paste(dirname(rstudioapi::getSourceEditorContext()$path),'/test/test_output/P_FDR.png',sep='')
+  path = './test/test_output/P_FDR.png'
   png(filename=path)
   plot(p, p.expected/p.obtained, col='black', type='l', lwd=2, ylab='FDR')
   dev.off()
   
-  path = paste(dirname(rstudioapi::getSourceEditorContext()$path),'/test/test_output/T_FDR.png',sep='')
+  path = './test/test_output/T_FDR.png'
   png(filename=path) 
   plot(x, t.expected/t.obtained, col='black', type='l', lwd=2, ylab='FDR')
   dev.off()
@@ -57,7 +54,7 @@ mootha_function <- function(mootha) {
 # function for Jongho data
 Jongho_function <- function(Z) {
   
-  path = paste(dirname(rstudioapi::getSourceEditorContext()$path),'/test/test_output/Jongho_distribution.png',sep='')
+  path = './test/test_output/Jongho_distribution.png'
   png(filename=path) 
   Z.hist <- hist(Z, 100, probability = T)
   z <- Z.hist$mids
@@ -70,35 +67,51 @@ Jongho_function <- function(Z) {
   y <- log(Z.hist$density[index])
   m1 <- lm(y ~ x + I(x^2))
 
-  path = paste(dirname(rstudioapi::getSourceEditorContext()$path),'/test/test_output/Jongho_Empirical.png',sep='')
+  path = './test/test_output/Jongho_Empirical.png'
   png(filename=path) 
   plot(x,y)
   lines(x, predict(m1), col='blue', lwd=2)
   dev.off()
 }
 
+#functions that might be used in the future (pipeline)
 
-full_data <- function() {
-  path = paste(dirname(rstudioapi::getSourceEditorContext()$path),'/src/data/MoothaData.txt',sep='')
-  mootha  = read.table(path,header=TRUE)
-  # build path to Jongho Dataset
-  path = paste(dirname(rstudioapi::getSourceEditorContext()$path),'/src/data/JonghoZscores.txt',sep='')
-  Z = scan(path)
-  mootha_function(mootha)
-  Jongho_function(Z)
+FDR_function <- function(t,null,alt){
+  observation = c(null,alt)
+  H0 = c()
+  HA = c()
+  for (i in 1:n){
+    if (observation[i] <= t){
+      H0 = append(H0,observation[i])
+    }
+    else{
+      HA = append(HA,observation[i])
+    }
+  }
+  TP = 0
+  for (i in 1:length(HA)){
+    if (HA[i] %in% alt){
+      TP = TP + 1
+    }
+  }
+  FP = length(HA) - TP
+  FDR = FP/length(HA)
+  
+  return(FDR)
+}
+
+Plot_FDR <- function(t){
   
 }
 
-test_data <- function() {
-  path = paste(dirname(rstudioapi::getSourceEditorContext()$path),'/test/testdata/test_mootha.txt',sep='')
-  mootha  = read.table(path,header=TRUE)
-  # build path to Jongho Dataset
-  path = paste(dirname(rstudioapi::getSourceEditorContext()$path),'/test/testdata/test_jongho.txt',sep='')
-  print(path)
-  Z = scan(path)
+#functions that might be used in the future (pipeline)
+
+simulate_function <-function(){
   
-  # run these functions
-  mootha_function(mootha)
-  Jongho_function(Z)
 }
 
+fit_function <- function(){
+  
+}
+
+#
