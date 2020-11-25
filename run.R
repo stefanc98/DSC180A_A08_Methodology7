@@ -47,6 +47,9 @@ if ('eda' %in% target) {
   	Z = scan(as.character(path2))
   	Jongho_function(Z)
 }
+else {
+	print('invalid input. Input options -- all/test')
+}
 
 #future functions (aka pipeline)
 #FDR_function()
