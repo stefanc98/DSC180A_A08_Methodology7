@@ -1,4 +1,5 @@
-# DSC180A_A08_Checkpoint2
+# DSC180A_A08_Methodology7
+
 
 This repository contains the basic codes for this project that focuses on multiple testing. The src folder contains the main R scripts, with all the functions inside, and the data folder, where all the datasets are held. 
 
