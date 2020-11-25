@@ -1,7 +1,0 @@
-{
-    "config": ["config/methods.json", "config/eda-params.json"],
-    "build": "run-data.R",
-    "library": ["src"],
-    "notebook": ["eda.Rmd"],
-    "targets": ["eda", "methods"]
-}
